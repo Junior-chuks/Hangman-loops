@@ -1,4 +1,7 @@
+
 import random
+
+import sys
 
 
 def read_file(file_name):
@@ -11,10 +14,14 @@ def get_user_input():
 
 
 def ask_file_name():
-    file_name = input("Words file? [leave empty to use short_words.txt] : ")
-    if not file_name:
-        return 'short_words.txt'
-    return file_name
+
+    #takes in text file name from command line argument 
+    if len(sys.argv) == 2:
+        file = sys.argv[1]
+        return file
+    else :
+        return "short_words.txt"
+
 
 
 def select_random_word(words):
@@ -180,6 +187,7 @@ if __name__ == "__main__":
     words = read_file(words_file)
     selected_word = select_random_word(words)
     current_answer = random_fill_word(selected_word)
+
 
     run_game_loop(selected_word, current_answer)
 
